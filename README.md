@@ -1,6 +1,6 @@
 # floaty
 
-![](https://badge.fury.io/py/floaty.svg)
+[![](https://badge.fury.io/py/floaty.svg)](https://pypi.org/project/floaty)
 
 Bandages for boto3 floating-point wounds. [*](https://github.com/boto/boto3/issues/665)
 

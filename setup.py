@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(name='floaty',
-      version='1.0.1',
+      version='2.0.0',
       url='https://github.com/tallesl/py-floaty',
       author='Talles Lasmar',
       author_email='talleslasmar@gmail.com',

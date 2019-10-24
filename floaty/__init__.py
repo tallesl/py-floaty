@@ -26,6 +26,17 @@ def read_items(query_return):
     return items
 
 
+def no_empty_string(obj):
+    for k in list(obj.keys()):
+        v = obj[k]
+
+        if isinstance(v, dict):
+            no_empty_string(v)
+
+        if v == '':
+            del obj[k]
+
+
 def _replace_floating_point(obj, replace):
     for k, v in obj.items():
 

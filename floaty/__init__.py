@@ -43,5 +43,5 @@ def _replace_floating_point(obj, replace):
         if isinstance(v, dict):
             _replace_floating_point(v, replace)
 
-        elif isinstance(v, Number) and v % 1:
-            obj[k] = replace(v)
+        elif isinstance(v, Number):
+            obj[k] = replace(v) if v % 1 else int(v)

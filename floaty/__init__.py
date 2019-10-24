@@ -3,11 +3,11 @@ from numbers import Number
 
 
 def no_decimal(obj):
-    return _replace_all(obj, Decimal, float)
+    return _replace_floating_point(obj, float)
 
 
 def no_float(obj):
-    return _replace_all(obj, float, lambda x: Decimal(str(x)))
+    return _replace_floating_point(obj, lambda x: Decimal(str(x)))
 
 
 def read_item(query_return):
@@ -20,18 +20,18 @@ def read_items(query_return):
     return [no_decimal(i) for i in items]
 
 
-def _replace_all(obj, _type, replace):
+def _replace_floating_point(obj, replace):
     if isinstance(obj, bool):
         return obj
 
     if isinstance(obj, list):
-        return [_replace_all(i, _type, replace) for i in obj]
+        return [_replace_floating_point(i, replace) for i in obj]
 
     elif isinstance(obj, dict):
-        return {k: _replace_all(v, _type, replace) for k, v in obj.items()}
+        return {k: _replace_floating_point(v, replace) for k, v in obj.items()}
 
-    elif isinstance(obj, Number):
-        return replace(obj) if obj % 1 else int(obj)
+    elif isinstance(obj, Number) and obj % 1:
+        return replace(obj)
 
     else:
         return obj

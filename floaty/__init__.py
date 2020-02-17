@@ -10,17 +10,6 @@ def no_float(obj):
     _replace_obj(obj, lambda x: Decimal(str(x)))
 
 
-def no_empty_string(obj):
-    for k in list(obj.keys()):
-        v = obj[k]
-
-        if isinstance(v, dict):
-            no_empty_string(v)
-
-        if v == '':
-            del obj[k]
-
-
 def _replace_obj(obj, replace):
     if isinstance(obj, bool):
         return obj
